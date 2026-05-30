@@ -1,0 +1,24 @@
+{
+  "name": "aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaurabhVishwakarma412/aws.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SaurabhVishwakarma412/aws/issues"
+  },
+  "homepage": "https://github.com/SaurabhVishwakarma412/aws#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

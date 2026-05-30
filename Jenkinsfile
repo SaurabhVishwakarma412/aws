@@ -2,30 +2,36 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
-                echo 'Pulling code from repository'
+                git 'https://github.com/SaurabhVishwakarma412/aws.git'
             }
         }
 
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Building application'
-                sh 'echo Build Started'
+                sh 'npm install'
             }
         }
 
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Running tests'
-                sh 'echo Tests Running'
+                sh 'docker build -t aws-app .'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Container') {
             steps {
-                echo 'Deploying application'
-                sh 'echo Deployment Done'
+                sh '''
+                docker stop aws-container || true
+                docker rm aws-container || true
+
+                docker run -d \
+                  --name aws-container \
+                  -p 5001:5000 \
+                  aws-app
+                '''
             }
         }
     }
